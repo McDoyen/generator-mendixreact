@@ -14,11 +14,8 @@ Open a command-line window (Press Win+R and type ``cmd`` or use Powershell)
   npm install -g yo grunt-cli
 ```
 Clone this repo to a folder of your choice then run npm link inside that folder
-```
 
----
-
-## Scaffold a widget
+Scaffold a widget
 
 ### 1. Start the generator in the folder you want to create a widget
 
@@ -39,9 +36,9 @@ The following information needs to be provided about your widget:
 * Github username (optional)
 
 You can press \<Enter\> if you want to use the default values.
-
+### 3. Use this commands to build the widget from the console
 ```bash
-Grunt build
+webpack
+grunt build
 ```
-To run the project
 
