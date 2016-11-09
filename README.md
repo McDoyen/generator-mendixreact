@@ -39,7 +39,7 @@ The following information needs to be provided about your widget:
 * Github username (optional)
 
 You can press \<Enter\> if you want to use the default values.
-### 3. Use this commands to build the widget from the console
+### 4. Use this commands to build the widget from the console
 ```bash
 webpack
 grunt build
