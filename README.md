@@ -13,17 +13,20 @@ Open a command-line window (Press Win+R and type ``cmd`` or use Powershell)
 ```bash
   npm install -g yo grunt-cli
 ```
-Clone this repo to a folder of your choice then run npm link inside that folder
+### 1.Clone this repo to a folder of your choice then run this command in from cmd within that folder
+```bash
+npm link
+```
 
 Scaffold a widget
 
-### 1. Start the generator in the folder you want to create a widget
+### 2. Start the generator in the folder you want to create a widget
 
 ```bash
 yo mendixreact
 ```
 
-### 2. Provide the following information about your widget:
+### 3. Provide the following information about your widget:
 
 The following information needs to be provided about your widget:
 
