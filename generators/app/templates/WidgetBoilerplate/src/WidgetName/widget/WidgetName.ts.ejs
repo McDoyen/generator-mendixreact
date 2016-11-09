@@ -1,0 +1,105 @@
+import * as dojoDeclare from "dojo/_base/declare";
+import * as WidgetBase from "mxui/widget/_WidgetBase";
+import { createElement } from "react";
+import { render } from "react-dom";
+
+import { OnClickProps, WidgetNameComponent  } from "./components/WidgetNameComponent";
+
+
+class WidgetName extends WidgetBase {
+
+    private progressAttribute: string;
+    private bootstrapStyleAttribute: string;
+    private barType: string;
+    private description: string;
+    private textColorSwitch: number;
+    private onclickMicroflow: string;
+
+    private contextObject: mendix.lib.MxObject;
+    private handles: any[];
+    private value: number;
+
+    postCreate() {
+        this.handles = [];
+        this.updateRendering();
+    }
+
+    update(object: mendix.lib.MxObject, callback?: Function) {
+        this.contextObject = object;
+        this.updateRendering(callback);
+        this._resetSubscriptions();
+    }
+
+    private updateRendering(callback?: Function) {
+        logger.debug(this.id + ".updateRendering");
+        if (this.contextObject) {
+            this.value = Math.round(parseInt(this.contextObject.get(this.progressAttribute).toString(), 10));
+            let barstyle: string = ((this.bootstrapStyleAttribute)) ?
+                (this.contextObject.get(this.bootstrapStyleAttribute)).toString() : "";
+
+            render(createElement(WidgetNameComponent, {
+                barType: this.barType,
+                bootstrapStyle: barstyle,
+                colorSwitch: this.textColorSwitch,
+                label: this.description,
+                microflowProps: this.createOnClickProps(),
+                progressAttributeValue: (this.value) ? this.value : 0
+            }), this.domNode);
+        }
+        if (typeof callback === "function") {
+            callback();
+        }
+    }
+    private _unsubscribe() {
+        if (this.handles) {
+            for (let handle of this.handles) {
+                mx.data.unsubscribe(handle);
+            }
+            this.handles = [];
+        }
+    }
+    private _resetSubscriptions() {
+        this._unsubscribe();
+        if (this.contextObject) {
+            this.handles.push(mx.data.subscribe({
+                callback: (guid) => this.updateRendering(),
+                guid: this.contextObject.getGuid()
+            }));
+            this.handles.push(mx.data.subscribe({
+                attr: this.progressAttribute,
+                callback: (guid, attr, attrValue) => this.updateRendering(),
+                guid: this.contextObject.getGuid()
+            }));
+
+            this.handles.push(mx.data.subscribe({
+                attr: this.bootstrapStyleAttribute,
+                callback: (guid, attr, attrValue) => this.updateRendering(),
+                guid: this.contextObject.getGuid()
+            }));
+        }
+    }
+
+    public createOnClickProps(): OnClickProps {
+        return (
+            {
+                applyto: "selection",
+                guid: this.contextObject.getGuid(),
+                microflow: this.onclickMicroflow,
+                widgetId: this.id
+            }
+        );
+    }
+}
+
+let dojoWidgetName = dojoDeclare(
+    "WidgetName.widget.WidgetName",
+    [ WidgetBase ],
+    (function (Source: any) {
+        let result: any = {};
+        for (let i in Source.prototype) {
+            if (i !== "constructor" && Source.prototype.hasOwnProperty(i)) {
+                result[i] = Source.prototype[i];
+            }
+        }
+        return result;
+    } (WidgetName)));

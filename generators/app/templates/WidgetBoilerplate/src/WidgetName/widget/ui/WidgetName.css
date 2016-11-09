@@ -1,0 +1,11 @@
+.progress-text {
+    white-space: nowrap;
+}
+
+.progressbar-text-contract .progress-bar {
+    color: black;
+}
+
+.progress-link {
+    cursor: pointer;
+}

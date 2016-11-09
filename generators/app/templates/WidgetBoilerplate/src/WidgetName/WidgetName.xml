@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="WidgetName.widget.WidgetName" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>WidgetName</name>
+	<description>The progress bar widget lets you display a percentage as a bar.</description>
+	<icon>      
+  iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJ
+  bWFnZVJlYWR5ccllPAAAAKdJREFUeNpi/P//PwMlgImBQjDwBrDw8fFF/vnzR44szSwsj1iUlZUl
+  161b10GOAUFBQcVMkpKSf1hZWRl27NgBxvjY6Bikl4WHh+c/Gxsbw4cPH8Cm4mOjA5BekAH/2NnZ
+  Gd68eQMWxMfGYsA/Fi4uLrABb9++hSvExUYHIL0snJyc/0H+mTt3LlwCFxsdgPSyAE1+2tDQkEFO
+  LAD1PmMczQsMAAEGACNuS4UbtbU3AAAAAElFTkSuQmCC
+  </icon>
+	<properties>
+		<property key="progressAttribute" type="attribute">
+			<caption>Progress attribute</caption>
+			<category>Data source</category>
+			<description>The attribute that contains the progress percentage.</description>
+			<attributeTypes>
+				<attributeType name="Integer"/>
+				<attributeType name="Float"/>
+			</attributeTypes>
+		</property>
+		<property key="bootstrapStyleAttribute" type="attribute" required="false">
+			<caption>Bootstrap Style</caption>
+			<category>Data source</category>
+			<description>Value of attribute should be: info, warning, danger, success. Alternatively use the 'Class bar' property set styling</description>
+			<attributeTypes>
+				<attributeType name="Enum"/>
+				<attributeType name="String"/>
+			</attributeTypes>
+		</property>
+		<property key="description" type="translatableString" required="false">
+			<caption>Description</caption>
+			<category>Display</category>
+			<description>The text to display in the bar after the percentage value.</description>
+		</property>
+		<property key="width" type="integer" defaultValue="250">
+			<caption>Width</caption>
+			<category>Display</category>
+			<description>The width in pixels of the widget. If 0 it will be 100%</description>
+		</property>
+		<property key="textColorSwitch" type="integer" defaultValue="50">
+			<caption>Colour switch value</caption>
+			<category>Display</category>
+			<description>The percentage at which the text gets a contract colour (class) to black to white.</description>
+		</property>
+		<property key="barType" type="enumeration" required="true" defaultValue="default">
+			<caption>Type</caption>
+			<category>Display</category>
+			<description>Render the type of progress bar: default, striped or animated </description>
+			<enumerationValues>
+				<enumerationValue key="default">default</enumerationValue>
+				<enumerationValue key="striped">striped</enumerationValue>
+				<enumerationValue key="animated">animated</enumerationValue>
+			</enumerationValues>
+		</property>
+		<property key="onclickMicroflow" type="microflow" required="false" >
+			<caption>Click MicroFlow</caption>
+			<category>Behaviour</category>
+			<description>If set the MF will be called on click on the Progress Bar</description>
+				<returnType type="Void"/>
+		</property>
+		<property key="classBar" type="enumeration" required="true" defaultValue="none">
+			<caption>Progress bar style</caption>
+			<category>Display</category>
+			<description>The styling and color of the progress bar using Bootstrap classes.</description>
+			<enumerationValues>
+				<enumerationValue key="none">None</enumerationValue>
+				<enumerationValue key="success">Success</enumerationValue>
+				<enumerationValue key="info">Info</enumerationValue>
+				<enumerationValue key="warning">Warning</enumerationValue>
+				<enumerationValue key="danger">Danger</enumerationValue>
+			</enumerationValues>
+		</property>              
+	</properties>
+</widget>
+

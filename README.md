@@ -1,38 +1,47 @@
-# generator-mendixreact [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> React Typescript mendix widget generator
+> [Yeoman](http://yeoman.io) generator for Mendix widgets using react, typescript and webpack.
 
-## Installation
+## About
 
-First, install [Yeoman](http://yeoman.io) and generator-mendixreact using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+This generator uses the Yeoman scaffolding tool to let you quickly create a [Mendix widget] that uses react, typescript and webpack
+
+## Prerequisites _(you only have to do this once)_
+
+First, you need to have [Node.js](https://nodejs.org/en/) installed. (We recommend a 4.x LTS version, the widget is tested against version 4 to 6). After that, you need to install Yeoman .
+
+Open a command-line window (Press Win+R and type ``cmd`` or use Powershell)
 
 ```bash
-npm install -g yo
-npm install -g generator-mendixreact
+  npm install -g yo grunt-cli
+```
+Clone this repo to a folder of your choice then run npm link inside that folder
 ```
 
-Then generate your new project:
+---
+
+## Scaffold a widget
+
+### 1. Start the generator in the folder you want to create a widget
 
 ```bash
 yo mendixreact
 ```
 
-## Getting To Know Yeoman
+### 2. Provide the following information about your widget:
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
+The following information needs to be provided about your widget:
 
-## License
+* name
+* description
+* copyright
+* license
+* version
+* author
+* Github username (optional)
 
-MIT © [EdwinKato]()
+You can press \<Enter\> if you want to use the default values.
 
+```bash
+Grunt build
+```
+To run the project
 
-[npm-image]: https://badge.fury.io/js/generator-mendixreact.svg
-[npm-url]: https://npmjs.org/package/generator-mendixreact
-[travis-image]: https://travis-ci.org/EdwinKato/generator-mendixreact.svg?branch=master
-[travis-url]: https://travis-ci.org/EdwinKato/generator-mendixreact
-[daviddm-image]: https://david-dm.org/EdwinKato/generator-mendixreact.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/EdwinKato/generator-mendixreact
-[coveralls-image]: https://coveralls.io/repos/EdwinKato/generator-mendixreact/badge.svg
-[coveralls-url]: https://coveralls.io/r/EdwinKato/generator-mendixreact
